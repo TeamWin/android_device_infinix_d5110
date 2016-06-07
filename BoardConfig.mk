@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/infinix/d5110_infinix
+LOCAL_PATH := device/infinix/d5110
 
 
 # Architecture
@@ -42,13 +42,13 @@ BOARD_KERNEL_CMDLINE += \
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS  := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000 --board X510-D5110-L-20
-TARGET_PREBUILT_KERNEL := device/infinix/d5110_infinix/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/infinix/d5110/prebuilt/kernel
 
 # TARGET IMAGES
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # RECOVERY
-TARGET_RECOVERY_FSTAB := device/infinix/d5110_infinix/rootdir/root/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/infinix/d5110/rootdir/root/twrp.fstab
 
 # PARTTIONS
 # We need the partitions size in decimal
