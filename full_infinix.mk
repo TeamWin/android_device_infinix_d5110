@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := d5110_infinix
-PRODUCT_NAME := full_infinix
+PRODUCT_NAME := full_d5110
 PRODUCT_BRAND := infinix
-PRODUCT_MODEL := Redmi Note 3
-PRODUCT_MANUFACTURER := d5110_infinix
+PRODUCT_MODEL := d5110_infinix
+PRODUCT_MANUFACTURER := infinix
