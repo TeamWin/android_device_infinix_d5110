@@ -1,8 +1,21 @@
+#
+# Copyright (C) 2016 The Android Open-Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 LOCAL_PATH := device/infinix/d5110_infinix
 
-# Platform
-TARGET_BOARD_PLATFORM := mt6580
-TARGET_NO_BOOTLOADER := true
 
 # Architecture
 TARGET_ARCH := arm
@@ -19,17 +32,25 @@ TARGET_LDPRELOAD := libxlog.so
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Bootloader
+# BOOTLOADER
 TARGET_BOOTLOADER_BOARD_NAME := mt6580
 
-# MTK Hardware
-BOARD_HAS_MTK_HARDWARE := true
-MTK_HARDWARE := true
-BOARD_USES_LEGACY_MTK_AV_BLOB := true
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
-COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
+# Kernel
+BOARD_KERNEL_CMDLINE += \
+	bootopt=64S3,32S1,32S1 \
+	androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS  := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000 --board X510-D5110-L-20
+TARGET_PREBUILT_KERNEL := device/infinix/d5110_infinix/prebuilt/kernel
 
-# Partitions
+# TARGET IMAGES
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# RECOVERY
+TARGET_RECOVERY_FSTAB := device/infinix/d5110_infinix/rootdir/root/twrp.fstab
+
+# PARTTIONS
 # We need the partitions size in decimal
 # Use cat proc/partitions via adb, then block size * 1024
 # This is the partitions of Infinix ROM, system size is bigger than Android One ROM
@@ -39,23 +60,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2634022912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12538347520
 # For the following line, do KERNEL_PAGE_SIZE * 64 (Most of time it is 2048 * 64)
 BOARD_FLASH_BLOCK_SIZE := 131072
-
-# TARGET IMAGES
-TARGET_USERIMAGES_USE_EXT4:=true
-
-# TARGET FSTAB
-TARGET_RECOVERY_FSTAB := device/infinix/d5110_infinix/rootdir/root/fstab.mt6580
-
-# KERNEL
-BOARD_KERNEL_CMDLINE += \
-	bootopt=64S3,32S1,32S1 \
-	androidboot.selinux=permissive
-	
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/infinix/d5110_infinix/prebuilt/kernel
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000 --board X510-D5110-L-20
-BOARD_CUSTOM_BOOTIMG := true
 
 # TWRP stuff
 DEVICE_RESOLUTION := 720x1280
@@ -79,7 +83,7 @@ TW_INCLUDE_FB2PNG := true
 TW_NO_CPU_TEMP := true
 TW_REBOOT_BOOTLOADER := true
 TW_REBOOT_RECOVERY := true
-TW_NO_USB_STORAGE := true
+TW_NO_USB_STORAGE := false
 TW_NO_BATT_PERCENT := false
 TW_NO_REBOOT_BOOTLOADER := false
 TW_NO_REBOOT_RECOVERY := false
