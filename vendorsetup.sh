@@ -1,3 +1,2 @@
-add_lunch_combo omni_infinix-eng
-add_lunch_combo omni_infinix-userdebug
-
+add_lunch_combo omni_d5110-eng
+add_lunch_combo omni_d5110-userdebug
