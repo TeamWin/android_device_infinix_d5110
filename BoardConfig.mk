@@ -48,7 +48,7 @@ TARGET_PREBUILT_KERNEL := device/infinix/d5110/prebuilt/kernel
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # RECOVERY
-TARGET_RECOVERY_FSTAB := device/infinix/d5110/rootdir/root/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/infinix/d5110/recovery/root/twrp.fstab
 
 # PARTTIONS
 # We need the partitions size in decimal
