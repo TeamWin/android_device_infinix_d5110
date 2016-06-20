@@ -54,10 +54,8 @@ TARGET_RECOVERY_FSTAB := device/infinix/d5110/recovery/root/twrp.fstab
 # We need the partitions size in decimal
 # Use cat proc/partitions via adb, then block size * 1024
 # This is the partitions of Infinix ROM, system size is bigger than Android One ROM
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2634022912
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 12538347520
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216 #65536 * 512 boot
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216 #65504 * 512 recovery
 # For the following line, do KERNEL_PAGE_SIZE * 64 (Most of time it is 2048 * 64)
 BOARD_FLASH_BLOCK_SIZE := 131072
 
